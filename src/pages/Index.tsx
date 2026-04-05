@@ -186,8 +186,9 @@ export default function Index() {
       <nav className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
         style={{ background: "rgba(253,250,243,0.96)", backdropFilter: "blur(12px)", borderBottom: "1px solid var(--beige-dark)" }}>
         <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
-          <a href="#hero" className="font-display text-2xl font-semibold" style={{ color: "var(--gold)" }}>
-            Fohow
+          <a href="#hero" className="flex items-center gap-2 font-display text-2xl font-semibold tracking-widest uppercase" style={{ color: "var(--gold)" }}>
+            <Icon name="Sun" size={26} style={{ color: "var(--gold)" }} />
+            FOHOW
           </a>
           <ul className="hidden xl:flex items-center gap-6">
             {NAV_LINKS.slice(0, 7).map((link) => (
