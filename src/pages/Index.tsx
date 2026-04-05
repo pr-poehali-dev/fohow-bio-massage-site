@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Icon from "@/components/ui/icon";
+import funcUrls from "../../backend/func2url.json";
 
 const NAV_LINKS = [
   { label: "Главная", href: "#hero" },
@@ -178,6 +179,30 @@ function SectionTitle({ subtitle, title, light }: { subtitle: string; title: str
 export default function Index() {
   useScrollReveal();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [formName, setFormName] = useState("");
+  const [formPhone, setFormPhone] = useState("");
+  const [formStatus, setFormStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+
+  const handleSubmit = async () => {
+    if (!formName.trim() || !formPhone.trim()) return;
+    setFormStatus("sending");
+    try {
+      const res = await fetch(funcUrls["send-lead"], {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: formName.trim(), phone: formPhone.trim() }),
+      });
+      if (res.ok) {
+        setFormStatus("success");
+        setFormName("");
+        setFormPhone("");
+      } else {
+        setFormStatus("error");
+      }
+    } catch {
+      setFormStatus("error");
+    }
+  };
 
   return (
     <div className="min-h-screen" style={{ background: "var(--cream)", fontFamily: "'Montserrat', sans-serif" }}>
@@ -603,16 +628,29 @@ export default function Index() {
             <p className="text-sm font-sans mb-8" style={{ color: "rgba(253,250,243,0.6)" }}>
               Первая консультация — бесплатно. Оценю ваш случай и подберу программу.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto mb-4">
-              <input type="text" placeholder="Ваше имя" className="flex-1 px-5 py-3.5 text-sm font-sans outline-none"
-                style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(201,168,76,0.3)", color: "var(--cream)", borderRadius: "2px" }} />
-              <input type="tel" placeholder="Телефон" className="flex-1 px-5 py-3.5 text-sm font-sans outline-none"
-                style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(201,168,76,0.3)", color: "var(--cream)", borderRadius: "2px" }} />
-            </div>
-            <button className="px-12 py-4 text-sm tracking-widest uppercase font-medium transition-opacity hover:opacity-80"
-              style={{ background: "var(--gold)", color: "var(--brown)", borderRadius: "2px" }}>
-              Записаться
-            </button>
+            {formStatus === "success" ? (
+              <div className="py-6">
+                <Icon name="CheckCircle" size={40} style={{ color: "var(--gold-light)", margin: "0 auto 12px" }} />
+                <p className="font-display text-xl" style={{ color: "var(--gold-light)" }}>Заявка отправлена!</p>
+                <p className="text-sm font-sans mt-2" style={{ color: "rgba(253,250,243,0.5)" }}>Я свяжусь с вами в ближайшее время</p>
+              </div>
+            ) : (
+              <>
+                <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto mb-4">
+                  <input type="text" placeholder="Ваше имя" value={formName} onChange={e => setFormName(e.target.value)}
+                    className="flex-1 px-5 py-3.5 text-sm font-sans outline-none"
+                    style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(201,168,76,0.3)", color: "var(--cream)", borderRadius: "2px" }} />
+                  <input type="tel" placeholder="Телефон" value={formPhone} onChange={e => setFormPhone(e.target.value)}
+                    className="flex-1 px-5 py-3.5 text-sm font-sans outline-none"
+                    style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(201,168,76,0.3)", color: "var(--cream)", borderRadius: "2px" }} />
+                </div>
+                <button onClick={handleSubmit} disabled={formStatus === "sending"}
+                  className="px-12 py-4 text-sm tracking-widest uppercase font-medium transition-opacity hover:opacity-80 disabled:opacity-50"
+                  style={{ background: "var(--gold)", color: "var(--brown)", borderRadius: "2px" }}>
+                  {formStatus === "sending" ? "Отправляю..." : formStatus === "error" ? "Попробовать снова" : "Записаться"}
+                </button>
+              </>
+            )}
           </div>
         </div>
       </section>
