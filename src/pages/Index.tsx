@@ -187,7 +187,7 @@ export default function Index() {
         style={{ background: "rgba(253,250,243,0.96)", backdropFilter: "blur(12px)", borderBottom: "1px solid var(--beige-dark)" }}>
         <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
           <a href="#hero" className="font-display text-2xl font-semibold" style={{ color: "var(--gold)" }}>
-            Fohow <span style={{ color: "var(--brown)", fontSize: "0.8em", fontWeight: 300 }}>БЭМ 3.0</span>
+            Fohow
           </a>
           <ul className="hidden xl:flex items-center gap-6">
             {NAV_LINKS.slice(0, 7).map((link) => (
