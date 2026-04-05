@@ -577,9 +577,9 @@ export default function Index() {
 
           <div className="grid md:grid-cols-2 gap-6 scroll-reveal mb-10">
             {[
-              { icon: "Phone", label: "Телефон / WhatsApp", value: "Укажите номер", href: "tel:+" },
-              { icon: "MessageCircle", label: "Telegram", value: "@ваш_никнейм", href: "https://t.me/" },
-              { icon: "MapPin", label: "Адрес приёма", value: "Ваш город и адрес", href: "#" },
+              { icon: "Phone", label: "Телефон / WhatsApp", value: "+7 913 570-03-51", href: "tel:+79135700351" },
+              { icon: "MessageCircle", label: "WhatsApp", value: "Написать в WhatsApp", href: "https://wa.me/79135700351" },
+              { icon: "MapPin", label: "Город", value: "Красноярск", href: "#" },
               { icon: "Clock", label: "Режим работы", value: "Пн–Сб: 9:00–19:00", href: "#" },
             ].map((contact) => (
               <a key={contact.label} href={contact.href}
