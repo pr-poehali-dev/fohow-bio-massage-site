@@ -546,7 +546,7 @@ export default function Index() {
                   alt="Специалист ТКМ — дипломированная медицинская сестра"
                   className="absolute inset-0 w-full h-full object-cover object-top"
                 />
-                <div className="absolute inset-4 pointer-events-none" style={{ border: "1px solid rgba(201,168,76,0.3)", borderRadius: "2px" }} />
+                <div className="absolute inset-0 pointer-events-none" style={{ border: "3px solid rgba(201,168,76,0.3)", borderRadius: "4px" }} />
               </div>
             </div>
 
