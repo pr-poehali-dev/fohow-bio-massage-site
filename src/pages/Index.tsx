@@ -552,9 +552,10 @@ export default function Index() {
 
             <div className="scroll-reveal">
               <p className="text-xs tracking-[0.4em] uppercase mb-3 font-sans" style={{ color: "var(--gold)" }}>О специалисте</p>
-              <h2 className="font-display text-4xl md:text-5xl font-light leading-tight mb-4" style={{ color: "var(--brown)" }}>
-                Дипломированный специалист ТКМ
+              <h2 className="font-display text-4xl md:text-5xl font-light leading-tight mb-2" style={{ color: "var(--brown)" }}>
+                Людмила Еремеева
               </h2>
+              <p className="text-sm tracking-[0.2em] uppercase mb-4 font-sans" style={{ color: "var(--gold)" }}>Дипломированный специалист ТКМ</p>
               <OrnamentDivider />
               <p className="text-sm leading-relaxed mb-6 font-sans" style={{ color: "var(--brown-light)" }}>
                 Дипломированная медицинская сестра и сертифицированный специалист в области традиционной китайской медицины.
