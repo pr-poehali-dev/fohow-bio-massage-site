@@ -541,12 +541,11 @@ export default function Index() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="scroll-reveal">
               <div className="relative overflow-hidden" style={{ borderRadius: "4px", aspectRatio: "3/4", maxWidth: "380px" }}>
-                <div className="absolute inset-0 flex flex-col items-center justify-center"
-                  style={{ background: "linear-gradient(145deg, #4A3520, #2C1A0A)" }}>
-                  <span className="text-7xl mb-4">👩‍⚕️</span>
-                  <p className="font-display text-xl" style={{ color: "var(--gold-light)" }}>Фото специалиста</p>
-                  <p className="text-xs font-sans mt-2" style={{ color: "rgba(253,250,243,0.4)" }}>будет добавлено</p>
-                </div>
+                <img
+                  src="https://cdn.poehali.dev/projects/caee8165-da31-48ef-bd51-da14e5b2f5f8/bucket/1fbe0600-6261-45ed-bbec-8b0d64638c0c.jpg"
+                  alt="Специалист ТКМ — дипломированная медицинская сестра"
+                  className="absolute inset-0 w-full h-full object-cover object-top"
+                />
                 <div className="absolute inset-4 pointer-events-none" style={{ border: "1px solid rgba(201,168,76,0.3)", borderRadius: "2px" }} />
               </div>
             </div>
